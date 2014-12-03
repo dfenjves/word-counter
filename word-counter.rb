@@ -40,8 +40,17 @@ class WordCounter
   end
 
   def words_with_most_consonants
-
-
+    longest_words_sans_cons = {}
+    longest_length = 0
+    word_array.each do |word|
+      word_sans_cons = word.gsub(/a|e|i|o|u|/, "")
+      if word_sans_cons.length >= longest_length
+        longest_length = word_sans_cons.length 
+        longest_words_sans_cons[word] = word_sans_cons.length
+      end
+    end
+    longest_words_sans_cons.select {|word,length_sans_cons| word if length_sans_cons == longest_length}.keys
+  end
 end
 
 
